@@ -48,6 +48,9 @@ Public Sub exercicio()
       
 ''      desliga os alertas do excel
       Application.DisplayAlerts = False
+      
+'      deletando o arquivo vazio do projeto 1
+      Application.Workbooks(1).Sheets(1).Delete
         
 '      salva o arquivo como "Loja"
       Application.Workbooks(2).SaveAs "Loja"
