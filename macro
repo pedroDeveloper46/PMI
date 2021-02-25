@@ -1,0 +1,69 @@
+
+Public Sub exercicio()
+       
+'      renomeando o titulo do arquivo
+      Application.Caption = "Aula 18/02/2021"
+      
+'      adicionando um novo projeto para trabalhar
+      Application.Workbooks.Add
+      
+'      nomeando a planilha do projeto recém adicionado
+      Application.Workbooks(2).Sheets(1).Name = "Produtos"
+      
+'      Workbooks(2) -> pois 2 é o indice do projeto adicionado anteriormente, Sheets(1) - >  pega a primeira planilha do projeto e Name é uma propriedade
+   
+'''      Sheets(1).Range("A1:D1") pega um intervalo de células da planilha, name é uma propriedade desse intervalo e "cabeçalho" é um valor atribuido a essa propriedade
+      Application.Workbooks(2).Sheets(1).Range("A1:D1").Name = "cabeçalho"
+   
+'''      como agora o nome "cabeçalho" está representando o intervalo acima, essa linha de código pega o intervalo usando o nome, pega a propriedade interior e a ColorIndex( é uma propriedade de Interior) e atribui um numero que representa um cor, isso dará uma cor de fundo ao intervalo
+      Application.Workbooks(2).Sheets(1).Range("cabeçalho").Interior.ColorIndex = 15
+    
+'      atribuindo uma cor a fonte da célula usando a propriedade Font, ColorIndex também é uma propriedade de Font
+      Application.Workbooks(2).Sheets(1).Range("cabeçalho").Font.ColorIndex = 11
+   
+'      atribuindo o valor TRUE para a propriedade Bold, que é uma propriedade de Font
+      Application.Workbooks(2).Sheets(1).Range("cabeçalho").Font.Bold = True
+   
+'      pegando uma única célula e usando a propriedade Value para receber um valor que ficará dentro da célula. Ex: A1 terá o conteudo "ID" dentro dela
+      Application.Workbooks(2).Sheets(1).Range("A1").Value = "ID"
+   
+      Application.Workbooks(2).Sheets(1).Range("B1").Value = "Descricao"
+   
+      Application.Workbooks(2).Sheets(1).Range("C1").Value = "Quantidade"
+   
+      Application.Workbooks(2).Sheets(1).Range("D1").Value = "Valor Unitário"
+      
+      
+'      passando valores paras os intervalos abaixos, aqui estou passando valores para o intervalo A2:D2
+      Application.Workbooks(2).Sheets(1).Range("A2").Value = 1
+   
+      Application.Workbooks(2).Sheets(1).Range("B2").Value = "Detergente"
+   
+      Application.Workbooks(2).Sheets(1).Range("C2").Value = 4
+   
+      Application.Workbooks(2).Sheets(1).Range("D2").Value = 1.8
+      
+'      copiando os valores do intervalo A2:D2 para o intervalo A3:D3, que seria o intervalo inferior
+      Application.Workbooks(2).Sheets(1).Range("A2:D2").Copy Application.Workbooks(2).Sheets(1).Range("A3:D3")
+      
+''      desliga os alertas do excel
+      Application.DisplayAlerts = False
+        
+'      salva o arquivo como "Loja"
+      Application.Workbooks(2).SaveAs "Loja"
+      
+'     imprime uma mensagem Box com o nome do arquivo e o caminho completo do arquivo
+      MsgBox "NOME DO ARQUIVO: " + Application.Workbooks(2).Name + " CAMINHO DO ARQUIVO: " + Application.Workbooks(2).Path
+      
+'     fecha o arquivo do projeto adicionado via codigo, que é representado pelo o indice 2
+      Application.Workbooks(2).Close
+      
+'      liga os alertas
+      Application.DisplayAlerts = True
+      
+      
+      
+      
+      
+      
+End Sub
